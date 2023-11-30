@@ -1,4 +1,4 @@
-### Category: ${CATEGORY}
+### Categoria: ${CATEGORY}
 
-| Title |
-|-------|
+| Titulo do post |
+|----------------|

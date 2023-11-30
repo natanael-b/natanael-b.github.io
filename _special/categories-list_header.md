@@ -1,4 +1,4 @@
-### Special: Categories
+### Lista de categorias
 
-| Name | Description |
-|------|-------------|
+| Nome | O que tem nela? |
+|------|-----------------|
