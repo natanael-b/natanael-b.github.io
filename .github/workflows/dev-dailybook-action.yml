@@ -1,0 +1,42 @@
+name: Publish Page
+on:
+  issues:
+    types:
+      - labeled
+
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      repository-projects: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          repository: ${{github.repository}}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ssh-key: ${{ secrets.SSH_PRIVATE }}
+
+      - name: Commit page
+        run: |
+          bash _build.sh
+
+          touch _LAST_POST
+
+          POST_TITLE=$(cat _LAST_POST)
+          rm _LAST_POST
+          
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+          git add .
+          git commit -m ":${POST_TITLE}"          
+          git push origin HEAD:main
+          
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
+          CATEGORY: ${{ github.event.label.name }}
+          SSH_PRIVATE: ${{ secrets.SSH_PRIVATE }}
