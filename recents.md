@@ -1,5 +1,14 @@
-<p align="right"><a href="/">Home</a> | <a href="/recents">Recents</a> | <a href="/categories">Categories</a></p>
+---
+title: Natanael Barbosa Santos
+---
 
-# No content here
+<p align="right"><a href="/">Início</a> | <a href="/recents">Recentes</a> | <a href="/categories">Categoriass</a></p>
 
-There no content on this area yet, [back to home?](/)
+### Special: Recents
+
+| Title | Category |
+|-------|----------|
+| [📄 Sobre o tal ano do Linux](posts/Linux/Sobre%20o%20tal%20ano%20do%20Linux) | [🔷 Linux](posts/Linux) |
+
+-----------
+

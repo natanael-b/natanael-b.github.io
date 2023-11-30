@@ -1,8 +1,8 @@
 ---
-title: My awesome website
+title: Natanael Barbosa Santos
 ---
 
-<p align="right"><a href="/">Home</a> | <a href="/recents">Recents</a> | <a href="/categories">Categories</a></p>
+<p align="right"><a href="/">Início</a> | <a href="/recents">Recentes</a> | <a href="/categories">Categoriass</a></p>
 
 # Welcome to my home page
 

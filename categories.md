@@ -1,5 +1,14 @@
-<p align="right"><a href="/">Home</a> | <a href="/recents">Recents</a> | <a href="/categories">Categories</a></p>
+---
+title: Natanael Barbosa Santos
+---
 
-# No content here
+<p align="right"><a href="/">Início</a> | <a href="/recents">Recentes</a> | <a href="/categories">Categoriass</a></p>
 
-There no content on this area yet, [back to home?](/)
+### Lista de categorias
+
+| Nome | O que tem nela? |
+|------|-----------------|
+| [🔷 Linux](posts/Linux.md) | Dicas e artigos sobre Linux |
+
+-----------
+
