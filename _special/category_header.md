@@ -1,0 +1,4 @@
+### Category: ${CATEGORY}
+
+| Title |
+|-------|

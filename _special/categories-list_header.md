@@ -1,0 +1,4 @@
+### Special: Categories
+
+| Name | Description |
+|------|-------------|
