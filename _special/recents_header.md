@@ -1,4 +1,4 @@
-### Special: Recents
+### Special: Recentes
 
-| Title | Category |
-|-------|----------|
+| Post  | Categoria |
+|-------|-----------|
