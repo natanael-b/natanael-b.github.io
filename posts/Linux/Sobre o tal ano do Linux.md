@@ -2,7 +2,7 @@
 title: Natanael Barbosa Santos - Sobre o tal ano do Linux
 ---
 
-<p align="right"><a href="/">Início</a> | <a href="/recents">Recentes</a> | <a href="/categories">Categoriass</a></p>
+<p align="right"><a href="/">Início</a> | <a href="/recents">Recentes</a> | <a href="/categories">Categorias</a></p>
 
 # Sobre o tal ano do Linux
 
