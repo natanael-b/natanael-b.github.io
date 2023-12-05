@@ -186,6 +186,8 @@ function build_structure() {
   }
 }
 
+date +%s > _timestamp
+
 function process_page_marks() {
   while IFS="" read -r line || [ -n "${line}" ]; do
     echo "${line}" | grep -q "^{.*}" && {
