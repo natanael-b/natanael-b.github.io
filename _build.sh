@@ -215,7 +215,7 @@ function process_page_marks() {
       
     [ "${line_lower}" = ":recents:" ] && {
       echo
-      sed '2 i |---|---|' _recents.txt
+      cat _recents.txt
       echo
       continue;
     }
@@ -315,7 +315,7 @@ function build_category_page(){
       cat "_special/category_header.md" | sed "s|\${CATEGORY}|${category}|g"
     ) > "${category_dir}.md"
 
-    posts=$(ls "${category_dir}"/*.md | sed 's|\.md$||g' | sort | grep -v "/_")
+    posts=$(ls "${category_dir}"/*.md | sed 's|\.md$||g' | sort -V | grep -v "/_")
 
     while IFS= read -r post; do
       link=$(echo "${post}" | sed 's| |%20|g;s|posts/||g;s|^@||g')
