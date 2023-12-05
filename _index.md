@@ -1,15 +1,7 @@
 # Bem vindo ao meu cantinho
 
-### Conheça meus projetos:
+#### Aqui estão os posts mais recentes:
 
-{Meus projetos}
+:recents:
 
-### Dev iniciante? Esses posts podem te ajudar:
 
-{Guia rápido GitHub}
-
-### Aqui estão os posts mais recentes:
-
-:recents: 
-
-z
