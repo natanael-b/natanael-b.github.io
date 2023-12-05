@@ -16,5 +16,7 @@ title: Natanael Barbosa Santos
 
 ### Aqui estão os posts mais recentes:
 
-:recents: 
+
+| [📄 Sobre o tal ano do Linux](posts/Linux/Sobre%20o%20tal%20ano%20do%20Linux) | [🔷 Linux](posts/Linux) |
+
 
