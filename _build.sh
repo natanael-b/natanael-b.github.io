@@ -5,6 +5,8 @@ POST_TITLE=$(gh issue view ${NUMBER} | grep "title:" | head -1 | sed 's|^title:|
 POST_LINK=$(echo "${POST_TITLE}" | sed 's| |%20|g')
 POST_TITLE_UPPER=$(echo "${POST_TITLE}" | tr '[:lower:]' '[:upper:]')
 
+[ ! "${1}" = "" ] && POST_TITLE_UPPER="${1}"
+
 SITE_TITLE=$(grep "title_prefix:" _config.yml | cut -c 15-)
 [ "${SITE_TITLE}" = "" ] && SITE_TITLE="My awesome website"
 
@@ -205,18 +207,19 @@ function process_page_marks() {
         echo
         continue;
       }
-
-      line_lower=$(echo "${line}"  | tr '[:upper:]' '[:lower:]' | tr -d '\r'  | tr -d ' ')
-      
-      echo -e "^${line_lower}$" > /dev/stderr
-      
-      [ "${line_lower}" = ":recents:" ] && {
-         echo
-         sed '2 i |---|---|' _recents.txt
-         echo
-         continue;
-      }
     }
+
+    line_lower=$(echo "${line}"  | tr '[:upper:]' '[:lower:]' | tr -d '\r'  | tr -d ' ')
+      
+    echo -e "^${line_lower}$" > /dev/stderr
+      
+    [ "${line_lower}" = ":recents:" ] && {
+      echo
+      sed '2 i |---|---|' _recents.txt
+      echo
+      continue;
+    }
+
     printf '%s\n' "${line}"
   done < "${1}"
 }
