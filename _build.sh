@@ -205,6 +205,14 @@ function process_page_marks() {
         echo
         continue;
       }
+
+      line_lower=$(echo "${line}"  | tr '[:upper:]' '[:lower:]')
+      [ "${line_lower}" = ":recents:" ] && {
+         echo
+         sed '2 i |---|---|' _recents.txt
+         echo
+         continue;
+      }
     }
     printf '%s\n' "${line}"
   done < "${1}"
