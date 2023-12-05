@@ -3,8 +3,8 @@ a8a93a684c4b24ebdd215f4aea33ca90  _special/categories-list_header.md
 e64e1f1cd7ef7e2a860332010a3d5b99  _special/category_footer.md
 fc497f2ca80f492aa728bc32a9b1426e  _special/category_header.md
 d41d8cd98f00b204e9800998ecf8427e  _special/global_footer.md
-5fcd14156eeb79459536482acd068538  _special/global_header.md
+53f81f8f65553de8f58a47ef1d591cb3  _special/global_header.md
 e64e1f1cd7ef7e2a860332010a3d5b99  _special/post_footer.md
 d41d8cd98f00b204e9800998ecf8427e  _special/post_header.md
 e64e1f1cd7ef7e2a860332010a3d5b99  _special/recents_footer.md
-270da875e6f5d965f17337b3be945b96  _special/recents_header.md
+aaac7d8be4ba0ff11ea31f5cf7f73e74  _special/recents_header.md
