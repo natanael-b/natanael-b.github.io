@@ -1,5 +1,7 @@
-# Welcome to my home page
+# Bem vindo ao meu cantinho
 
-This is my daily book built using [dev-dailybook](https://github.com/natanael-b/dev-dailybook)
+#### Aqui estão os posts mais recentes:
+
+:recents: 
 
 
