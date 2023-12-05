@@ -12,7 +12,12 @@ title: Natanael Barbosa Santos
 
 ### Dev iniciante? Esses posts podem te ajudar:
 
-{Guia rápido GitHub}
+
+<table>
+<tr><td><a href="posts/Guia_rápido_GitHub/1%20-%20O%20perfil">📄 1 - O perfil</a>
+</td></tr><tr><td><a href="posts/Guia_rápido_GitHub/_1%20-%20O%20perfil">📄 _1 - O perfil</a>
+</td></tr></table>
+
 
 ### Aqui estão os posts mais recentes:
 
