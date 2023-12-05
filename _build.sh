@@ -186,9 +186,6 @@ function build_structure() {
 
 function process_page_marks() {
   while IFS="" read -r line || [ -n "${line}" ]; do
-
-    echo "${line}" > /dev/stderr
-    
     echo "${line}" | grep -q "^{.*}" && {
       DIR=$(echo "${line}" | sed 's/{//;s/}//' | tr ' ' '_' | tr -d '\r')
       [ -d "posts/${DIR}" ] && {
@@ -210,6 +207,9 @@ function process_page_marks() {
       }
 
       line_lower=$(echo "${line}"  | tr '[:upper:]' '[:lower:]' | tr -d '\r'  | tr -d ' ')
+      
+      echo -e "^${line_lower}$" > /dev/stderr
+      
       [ "${line_lower}" = ":recents:" ] && {
          echo
          sed '2 i |---|---|' _recents.txt
