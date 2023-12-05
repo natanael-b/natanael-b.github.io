@@ -195,10 +195,10 @@ function process_page_marks() {
       [ -d "posts/${DIR}" ] && {
         echo
         echo "<table>"
-        posts=$(ls "posts/${DIR}"/*.md | sed 's|\.md$||g' | sort | tr -d '\r')
+        posts=$(ls "posts/${DIR}"/*.md  | grep -v "/_" | sed 's|\.md$||g' | sort | tr -d '\r')
         
         while IFS= read -r post; do
-          link=$(echo "${post}" | sed 's| |%20|g;s|posts/||g;s|^@||g')
+          link=$(echo "${post}" | sed 's| |%20|g;s|posts/||g')
           post=$(basename "${post}")
           echo -n '<tr><td>'
           echo "<a href=\"posts/${link}\">📄 ${post}</a>"
