@@ -186,6 +186,9 @@ function build_structure() {
 
 function process_page_marks() {
   while IFS="" read -r line || [ -n "${line}" ]; do
+
+    echo "${line}" > /dev/stderr
+    
     echo "${line}" | grep -q "^{.*}" && {
       DIR=$(echo "${line}" | sed 's/{//;s/}//' | tr ' ' '_' | tr -d '\r')
       [ -d "posts/${DIR}" ] && {
