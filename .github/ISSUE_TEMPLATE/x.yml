@@ -1,0 +1,76 @@
+name: Enviar seu projeto
+description: Inscreva seu projeto já finalizado
+title: "[Bug]: "
+labels: ["triage"]
+projects: ["octo-org/1", "octo-org/44"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        <br>
+
+        > Obrigado por confiar na nossa plataforma, preencha o formulário a seguir, seu projeto será avaliado internamente e então publicado<br>
+
+        > **Lembrando que:** Esse formulário destina-se a projetos já em produção, para projetos em desenvolvimento use [esse formulário](link)
+
+        <br>
+  - type: input
+    id: pitch
+    attributes:
+      label: Descrição do projeto
+      placeholder: Em até 50 palavras descreva seu projeto
+    validations:
+      required: true
+  - type: textarea
+    id: intro
+    attributes:
+      label: Introdução
+      description: Descreva seus projeto em uma linguagem não técnica, aqui serve para apresentar seu projeto like i’m 5, ou seja de uma forma simples e objetiva no geral não deveria passar de 400 caracteres o ideal seria tem menos de 140 (obviamente excluindo pontuação)
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: What version of our software are you running?
+      options:
+        - 1.0.2 (Default)
+        - 1.0.3 (Edge)
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Condições da plataforma
+      description: Para ter seu projeto aprovado, você precisa cumprir certos requisitos, uma versão mais detalhada dos requisitos [se encontra aqui](https://example.com). 
+      options:
+        - label: Meu projeto está finalizado (saiu da fase MVP/Beta/RC)
+          required: true
+        - label: Meu projeto permite teste gratuito das suas funcionalidades básicas (pode ser limitado por tempo)
+          required: true
+        - label: Meu projeto não é uma casa de apostas e/ou market place de produtos e/ou serviços que causam danos a sociedade
+          required: true
+        - label: Meu projeto não viola nenhuma lei vigente no Brasil
+          required: true
+        - label: Meu projeto não possui conteúdo pornografico, gore ou afins
+          required: true
+        - label: Eu possuo todo e qualquer direito sobre o projeto
+          required: true
