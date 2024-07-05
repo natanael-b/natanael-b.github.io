@@ -24,7 +24,7 @@ body:
     id: intro
     attributes:
       label: Introdução
-      description: Descreva seus projeto em uma linguagem não técnica, aqui serve para apresentar seu projeto like i’m 5, ou seja de uma forma simples e objetiva no geral não deveria passar de 400 caracteres o ideal seria tem menos de 140 (obviamente excluindo pontuação)
+      placeholder: Descreva seus projeto em uma linguagem não técnica, aqui serve para apresentar seu projeto like i’m 5, ou seja de uma forma simples e objetiva no geral não deveria passar de 400 caracteres o ideal seria tem menos de 140 (obviamente excluindo pontuação)
     validations:
       required: true
   - type: dropdown
