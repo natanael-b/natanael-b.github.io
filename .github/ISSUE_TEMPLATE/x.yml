@@ -57,7 +57,8 @@ body:
   - type: input
     id: url
     attributes:
-      label: Link para o seu projeto, não use links para repositórios `git` ou similares, se seu projeto não possui uma página pode usar o [GitHub Pages](https://pages.github.com/) gratuitamente para criar uma
+      label: Link para o seu projeto
+      description: Não use links para repositórios `git` ou similares, se seu projeto não possui uma página pode usar o [GitHub Pages](https://pages.github.com/) gratuitamente para criar uma
       placeholder: https://meu-projeto.com
     validations:
       required: true
