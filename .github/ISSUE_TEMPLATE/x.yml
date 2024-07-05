@@ -32,9 +32,9 @@ body:
     id: utm
     attributes:
       label: Marketing
-      description: Deseja que preenchamos os parâmetros UTM na sua URL?
+      description: Deseja que preenchamos os parâmetros [UTM](https://pt.wikipedia.org/wiki/Par%C3%A2metros_UTM) na sua URL?
       options:
-        - label: Sim, adicione os seguinte parametros UTM
+        - label: Sim, adicione os seguinte parametros UTM:
   - type: markdown
     attributes:
       value: |
