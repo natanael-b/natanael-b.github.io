@@ -1,7 +1,7 @@
 name: Enviar seu projeto
 description: Inscreva seu projeto já finalizado
-title: "[Bug]: "
-labels: ["triage"]
+title: ""
+labels: []
 projects: ["octo-org/1", "octo-org/44"]
 body:
   - type: markdown
