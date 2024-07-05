@@ -82,6 +82,23 @@ body:
         - Fintech
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: |
+
+        | Parâmetro    | Significado                                                                    |
+        |--------------|--------------------------------------------------------------------------------|
+        | Audiovisual   | Um software que atua com conteúdo multimídia	                                        |
+        | Áudio   | Um software que atua com áudio	                    |
+        | Vídeo | Um software que atua com vídeo        |
+        | Desenvolvimento  | Um software usado para o desenvolvimento de software |
+        | Desenvolvimento jogos | Um software usado para o desenvolvimento de jogos |
+        | Educação | Um software usado para o desenvolvimento de jogos |
+        | Plataforma educacional | Um software usado para o desenvolvimento de jogos |
+        | Gráficos 2D | Um software que atua com imagens 2D|
+        | Gráficos 3D | Um software que atua com imagens 2D|
+        
+        <br>
   - type: dropdown
     id: startup
     attributes:
@@ -93,6 +110,27 @@ body:
         - Não
     validations:
       required: true
+  - type: checkboxes
+    id: especificidades
+    attributes:
+      label: Recursos
+      options:
+        - label: API
+          required: false
+        - label: App Android
+          required: false
+        - label: App iOS
+          required: false
+        - label: App HarmonyOS
+          required: false
+        - label: App Linux
+          required: false
+        - label: App Mac
+          required: false
+        - label: App Windows
+          required: false
+        - label: Extensão para navegador
+          required: false
   - type: checkboxes
     id: terms
     attributes:
