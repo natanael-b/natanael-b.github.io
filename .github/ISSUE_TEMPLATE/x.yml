@@ -35,7 +35,6 @@ body:
       description: Deseja que preenchamos os parâmetros UTM na sua URL? Uma tabela com os valores [se encontra aqui](https://example.com). 
       options:
         - label: Sim, adicione os parametros UTM
-          required: false
   - type: dropdown
     id: version
     attributes:
