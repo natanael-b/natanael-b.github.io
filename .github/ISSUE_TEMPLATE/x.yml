@@ -16,17 +16,26 @@ body:
   - type: input
     id: pitch
     attributes:
-      label: Descrição do projeto
-      placeholder: Em até 50 palavras descreva seu projeto
+      label: Descrição rápida do projeto
+      placeholder: Em até 25 palavras descreva seu projeto
     validations:
       required: true
   - type: textarea
     id: intro
     attributes:
       label: Introdução
-      placeholder: Descreva seus projeto em uma linguagem não técnica, aqui serve para apresentar seu projeto like i’m 5, ou seja de uma forma simples e objetiva no geral não deveria passar de 400 caracteres o ideal seria tem menos de 140 (obviamente excluindo pontuação)
+      description: Não use cabeçalhos ou imagens aqui
+      placeholder: Descreva seus projeto em uma linguagem não técnica, de uma forma simples e objetiva o ideal é ter menos de 140 caracteres (excluindo pontuação)
     validations:
       required: true
+  - type: checkboxes
+    id: utm
+    attributes:
+      label: 
+      description: Deseja que preenchamos os parâmetros UTM na sua URL? Uma tabela com os valores [se encontra aqui](https://example.com). 
+      options:
+        - label: Sim, adicione os parametros UTM
+          required: false
   - type: dropdown
     id: version
     attributes:
