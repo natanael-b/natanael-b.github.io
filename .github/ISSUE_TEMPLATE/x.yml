@@ -32,7 +32,6 @@ body:
     id: descricao
     attributes:
       label: Descricao
-      render: plain
       placeholder: Descreva seu projeto de forma mais detalhada, porém ainda forma simples e objetiva esse não é um espaço para documentação, o ideal é ter menos de 400 caracteres (excluindo pontuação)
     validations:
       required: true
