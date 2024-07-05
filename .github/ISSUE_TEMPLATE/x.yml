@@ -88,9 +88,9 @@ body:
       label: Empresa
       description: Seu projeto se enquadra no modelo [SaaS](https://pt.wikipedia.org/wiki/Software_como_servi%C3%A7o) ou [Startup](https://pt.wikipedia.org/wiki/Startup)?
       options:
-        - label: Sim, um SaaS
-        - label: Sim, ums Startup
-        - label: Não
+        - Sim, um SaaS
+        - Sim, ums Startup
+        - Não
     validations:
       required: true
   - type: checkboxes
