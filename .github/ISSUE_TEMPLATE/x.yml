@@ -24,8 +24,16 @@ body:
     id: intro
     attributes:
       label: Introdução
-      description: Não use cabeçalhos ou imagens aqui
-      placeholder: Descreva seus projeto em uma linguagem não técnica, de uma forma simples e objetiva o ideal é ter menos de 140 caracteres (excluindo pontuação)
+      description: Não use formatação aqui
+      placeholder: Descreva seus projeto em uma linguagem não técnica, de uma forma simples e objetiva, o ideal é ter menos de 140 caracteres (excluindo pontuação)
+    validations:
+      required: true
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descricao
+      render: shell
+      placeholder: Descreva seu projeto de forma mais detalhada, porém ainda forma simples e objetiva esse não é um espaço para documentação, o ideal é ter menos de 400 caracteres (excluindo pontuação)
     validations:
       required: true
   - type: checkboxes
@@ -46,6 +54,13 @@ body:
         | utm_campaign | Identifica uma promoção específica de produto ou campanha estratégica.         | elementary_pitch |
         | utm_content  | Identifica especificamente o que foi clicado para direcionar o usuário ao site | banner           |
         <br>
+  - type: input
+    id: url
+    attributes:
+      label: Link para o seu projeto, não use links para repositórios `git` ou similares, se seu projeto não possui uma página pode usar o [GitHub Pages](https://pages.github.com/) gratuitamente para criar uma
+      placeholder: https://meu-projeto.com
+    validations:
+      required: true
   - type: dropdown
     id: version
     attributes:
