@@ -72,10 +72,14 @@ body:
         - Áudio
         - Vídeo
         - Desenvolvimento
+        - Desenvolvimento jogos
         - Educação
+        - Plataforma educacional
         - Jogos
-        - Gráficos
+        - Gráficos 2D
+        - Gráficos 3D
         - Rede
+        - Navegadores
         - Escritório/Produtividade
         - Ciência
         - Utilitário
@@ -87,18 +91,24 @@ body:
     attributes:
       value: |
 
-        | Parâmetro    | Significado                                                                    |
-        |--------------|--------------------------------------------------------------------------------|
-        | Audiovisual   | Um software que atua com conteúdo multimídia	                                        |
-        | Áudio   | Um software que atua com áudio	                    |
-        | Vídeo | Um software que atua com vídeo        |
-        | Desenvolvimento  | Um software usado para o desenvolvimento de software |
-        | Desenvolvimento jogos | Um software usado para o desenvolvimento de jogos |
-        | Educação | Um software usado para o desenvolvimento de jogos |
-        | Plataforma educacional | Um software usado para o desenvolvimento de jogos |
-        | Gráficos 2D | Um software que atua com imagens 2D|
-        | Gráficos 3D | Um software que atua com imagens 2D|
-        
+        | Categoria                | Significado                                                                    |
+        |--------------------------|--------------------------------------------------------------------------------|
+        | Audiovisual              | Lida com conteúdo multimidia	                                        |
+        | Áudio                    | Um software que atua com áudio	                    |
+        | Vídeo                    | Um software que atua com vídeo        |
+        | Desenvolvimento          | Um software usado para o desenvolvimento de software |
+        | Desenvolvimento jogos    | Um software usado para o desenvolvimento de jogos |
+        | Educação                 | Um software usado para o desenvolvimento de jogos |
+        | Plataforma educacional   | Um software usado para o desenvolvimento de jogos |
+        | Jogos                    | Um software que atua com imagens 2D|
+        | Gráficos 2D              | Um software que atua com imagens 2D|
+        | Gráficos 3D              | Um software que atua com imagens 2D|
+        | Navegadores              | Um software que atua com imagens 2D|
+        | Escritório/Produtividade | Um software que atua com imagens 2D|
+        | Ciência                  | Um software que atua com imagens 2D|
+        | Utilitário               | Um software que atua com imagens 2D|
+        | Newsletter               | Um software que atua com imagens 2D|
+        | Fintech                  | Um software que atua com imagens 2D|
         <br>
   - type: dropdown
     id: startup
