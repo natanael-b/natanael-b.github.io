@@ -8,11 +8,8 @@ body:
     attributes:
       value: |
         <br>
-
-        > Obrigado por confiar na nossa plataforma, preencha o formulário a seguir, seu projeto será avaliado internamente e então publicado<br>
-
+        Obrigado por confiar na nossa plataforma, preencha o formulário a seguir, seu projeto será avaliado internamente e então publicado<br>
         > **Lembrando que:** Esse formulário destina-se a projetos já em produção, para projetos em desenvolvimento use [esse formulário](link)
-
         <br>
   - type: input
     id: pitch
