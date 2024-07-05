@@ -30,6 +30,7 @@ body:
       required: true
   - type: textarea
     id: descricao
+    render: plain
     attributes:
       label: Descricao
       placeholder: Descreva seu projeto de forma mais detalhada, porém ainda forma simples e objetiva esse não é um espaço para documentação, o ideal é ter menos de 400 caracteres (excluindo pontuação)
@@ -105,11 +106,39 @@ body:
       label: Empresa
       description: Seu projeto se enquadra no modelo [SaaS](https://pt.wikipedia.org/wiki/Software_como_servi%C3%A7o) ou [Startup](https://pt.wikipedia.org/wiki/Startup)?
       options:
+        - Não
         - Sim, um SaaS
         - Sim, ums Startup
-        - Não
     validations:
       required: true
+  - type: input
+    id: icon
+    attributes:
+      label: Link para o ícone do projeto
+      description: Formato PNG resolução de 256x256
+      placeholder: https://meu-projeto.com/icon.png
+    validations:
+      required: true
+  - type: input
+    id: screenshot1
+    attributes:
+      label: Link para a captura de tela
+      description: Formato PNG, recomendada a resolução de 1280x720
+      placeholder: https://meu-projeto.com/screenshot1.png
+    validations:
+      required: true
+  - type: input
+    id: screenshot2
+    attributes:
+      label: Link para o ícone do projeto
+      description: Formato PNG, recomendada a mesma resolução do screenshot1
+      placeholder: https://meu-projeto.com/screenshot2.png
+  - type: input
+    id: screenshot3
+    attributes:
+      label: Link para o ícone do projeto
+      description: Formato PNG, recomendada a mesma resolução do screenshot1
+      placeholder: https://meu-projeto.com/screenshot3.png
   - type: checkboxes
     id: especificidades
     attributes:
