@@ -38,8 +38,6 @@ body:
   - type: markdown
     attributes:
       value: |
-        <br>
-        
         #### Parâmetros UTM para configuração:
 
         | Parâmetro    | Significado                                                                    | Valor            |
