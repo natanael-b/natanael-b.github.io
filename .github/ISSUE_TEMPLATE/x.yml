@@ -34,11 +34,10 @@ body:
       label: Marketing
       description: Deseja que preenchamos os parâmetros UTM na sua URL?
       options:
-        - label: Sim, adicione os parametros UTM
+        - label: Sim, adicione os seguinte parametros UTM
   - type: markdown
     attributes:
       value: |
-        #### Parâmetros UTM para configuração:
 
         | Parâmetro    | Significado                                                                    | Valor            |
         |--------------|--------------------------------------------------------------------------------|------------------|
