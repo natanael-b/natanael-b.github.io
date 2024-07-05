@@ -62,33 +62,37 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: version
+    id: category
     attributes:
-      label: Version
-      description: What version of our software are you running?
+      label: Categoria
+      description: Em qual categoria seu projeto se enquadra? 
       options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-      default: 0
+        - Audiovisual
+        - Áudio
+        - Vídeo
+        - Desenvolvimento
+        - Educação
+        - Jogos
+        - Gráficos
+        - Rede
+        - Escritório/Produtividade
+        - Ciência
+        - Utilitário
+        - Newsletter
+        - Fintech
     validations:
       required: true
   - type: dropdown
-    id: browsers
+    id: startup
     attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
+      label: Empresa
+      description: Seu projeto se enquadra no modelo [SaaS](https://pt.wikipedia.org/wiki/Software_como_servi%C3%A7o) ou [Startup](https://pt.wikipedia.org/wiki/Startup)?
       options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
-  - type: textarea
-    id: logs
-    attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
-
+        - label: Sim, um SaaS
+        - label: Sim, ums Startup
+        - label: Não
+    validations:
+      required: true
   - type: checkboxes
     id: terms
     attributes:
