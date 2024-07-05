@@ -24,7 +24,7 @@ body:
     id: intro
     attributes:
       label: Introdução
-      description: Não use formatação aqui
+      render: plain
       placeholder: Descreva seus projeto em uma linguagem não técnica, de uma forma simples e objetiva, o ideal é ter menos de 140 caracteres (excluindo pontuação)
     validations:
       required: true
@@ -32,7 +32,7 @@ body:
     id: descricao
     attributes:
       label: Descricao
-      render: shell
+      render: plain
       placeholder: Descreva seu projeto de forma mais detalhada, porém ainda forma simples e objetiva esse não é um espaço para documentação, o ideal é ter menos de 400 caracteres (excluindo pontuação)
     validations:
       required: true
