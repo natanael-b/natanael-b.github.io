@@ -122,7 +122,7 @@ body:
   - type: input
     id: screenshot1
     attributes:
-      label: Link para a captura de tela
+      label: Link para a captura de tela principal
       description: Formato PNG, recomendada a resolução de 1280x720
       placeholder: https://meu-projeto.com/screenshot1.png
     validations:
@@ -130,13 +130,13 @@ body:
   - type: input
     id: screenshot2
     attributes:
-      label: Link para o ícone do projeto
+      label: Link para a captura de tela secundária
       description: Formato PNG, recomendada a mesma resolução do screenshot1
       placeholder: https://meu-projeto.com/screenshot2.png
   - type: input
     id: screenshot3
     attributes:
-      label: Link para o ícone do projeto
+      label: Link para a captura de tela extra
       description: Formato PNG, recomendada a mesma resolução do screenshot1
       placeholder: https://meu-projeto.com/screenshot3.png
   - type: checkboxes
