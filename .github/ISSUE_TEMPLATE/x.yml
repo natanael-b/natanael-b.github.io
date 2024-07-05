@@ -31,10 +31,24 @@ body:
   - type: checkboxes
     id: utm
     attributes:
-      label: UTM
-      description: Deseja que preenchamos os parâmetros UTM na sua URL? Uma tabela com os valores [se encontra aqui](https://example.com). 
+      label: Marketing
+      description: Deseja que preenchamos os parâmetros UTM na sua URL?
       options:
         - label: Sim, adicione os parametros UTM
+  - type: markdown
+    attributes:
+      value: |
+        <br>
+        
+        #### Parâmetros UTM para configuração:
+
+        | Parâmetro    | Significado                                                                    | Valor            |
+        |--------------|--------------------------------------------------------------------------------|------------------|
+        | utm_source   | Identifica qual site enviou o tráfego.	                                        | dev-home-place   |
+        | utm_medium   | Identifica que tipo de link foi usado, como CPM ou e-mail.	                    | cpm              |
+        | utm_campaign | Identifica uma promoção específica de produto ou campanha estratégica.         | elementary_pitch |
+        | utm_content  | Identifica especificamente o que foi clicado para direcionar o usuário ao site | banner           |
+        <br>
   - type: dropdown
     id: version
     attributes:
