@@ -1,6 +1,6 @@
 name: Enviar seu projeto
 description: Inscreva seu projeto já finalizado
-title: ""
+title: "Nome do projeto"
 labels: []
 projects: ["octo-org/1", "octo-org/44"]
 body:
