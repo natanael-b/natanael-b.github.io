@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="https://unpkg.com/crc@4.3.2"></script>
+    <script>
+        const SUPABASE_URL = "https://dytsogahztgruficbfks.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR5dHNvZ2FoenRncnVmaWNiZmtzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQwMjUzNDQsImV4cCI6MjAzOTYwMTM0NH0.0mZ3Spelw5PiHy0RkQckSbjBJhJ0rZ4PRtqAKLUEEYM";
+        const sb = supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+    </script>
+  </head>
+  <body class="dark">
+    <dialog id="login">
+        <form>
+            <table>
+                <tr><th colspan="3">X</th></tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td></td>
+                    <td><input type="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td>Senha:</td>
+                    <td></td>
+                    <td><input type="password" id="password"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input type="button" value="Entrar" onclick="event.preventDefault();doLogin();"></td>
+                </tr>
+            </table>
+        </form>
+    </dialog>
+    <dialog id="manageCategories">
+        <form>
+            <table class="table-dialog">
+                <tr>
+                    <td><button class="close-button">X</button></td>
+                    <th colspan="2">Aqui você pode controlar as categorias dos seus produtos</th>
+                </tr>
+                <tr>
+                    <td>Nome:</td>
+                    <td><input type="text" id="nomeCategoria" style="width: 100%;"></td>
+                </tr>
+                <tr style="vertical-align: middle;">
+                    <td>Ícone:</td>
+                    <td>
+                        <table class="table-picker" id="iconeCategoria">
+                            <tr></tr>
+                            <tr>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: right;"><button onclick="doCreateCategory()">Adicionar</button></td>
+                </tr>
+
+            </table>
+            <hr>
+            <table class="table-simplified" style="width: 100%;"> 
+                <tr>
+                    <td colspan="3"><b>Categorias ativas</b></td>
+                </tr>
+            </table>
+        </form>
+    </dialog>
+
+    <dialog id="configureShop">
+        <form>
+            <table class="table-dialog">
+                <tr>
+                    <td colspan="2">
+                        <a><i data-lucide="id-card"></i></a>&emsp;Informações básicas da empresa - Tela 1/4
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nome:</td>
+                    <td><input type="text" id="nomeEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td>Telefone para contato comercial:</td>
+                    <td><input type="text" id="telefoneEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td>Aceita cartão crédito/débito?</td>
+                    <td>
+                        <select id="aceitaCartaoEstabelecimento">
+                            <option>Escolha</option>
+                            <option value="true">Sim</option>
+                            <option value="true">Não</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Aceita cartão corporativo?</td>
+                    <td>
+                        <select id="aceitaCartaoCorporativoEstabelecimento">
+                            <option>Escolha</option>
+                            <option value="true">Sim</option>
+                            <option value="true">Não</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Aceita Pix?</td>
+                    <td>
+                        <select id="aceitaPixEstabelecimento">
+                            <option>Escolha</option>
+                            <option value="true">Sim</option>
+                            <option value="true">Não</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Realiza entrega?</td>
+                    <td>
+                        <select id="realizaEntregaEstabelecimento">
+                            <option>Escolha</option>
+                            <option value="true">Sim</option>
+                            <option value="true">Não</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: right;">
+                        <input type="button" value="Voltar" onclick="event.preventDefault();previousSetupPage('configureShopPayments');">
+                        <input type="button" value="Próximo" onclick="event.preventDefault();configureShopValidate();">
+                    </td>
+                </tr>
+            </table>
+            <p style="color: red;" id="errorConfigureShop"></p>
+        </form>
+    </dialog>
+
+    <dialog id="configureShopPayments">
+        <form>
+            <table class="table-dialog">
+                <tr>
+                    <td colspan="2">
+                        <a><i data-lucide="badge-dollar-sign"></i></a>&emsp;Como o cliente te paga? - Tela 2/4
+                    </td>
+                </tr>
+                <tr name="cartao">
+                    <td>Qual taxa você cobra no cartão?</td>
+                    <td>
+                        <input type="number" id="valorMinimoEntregaEstabelecimento"><br><br>
+                        <label><input type="checkbox" id="naoCobrarTaxaCartao">&ensp;Não cobro taxa</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>A partir de que valor o cliente não paga a taxa?</td>
+                    <td>
+                        <input type="number" id="taxaCartaoCreditoEstabelecimento" value="x"><br><br>
+                        <label>&ensp;<input type="checkbox" id="naoIsentarTaxaCartao">Sem isenção de taxa</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Qual nome aparece quando te transferem via Pix?</td>
+                    <td><input type="text" id="nomePixEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td>Qual a sua chave Pix?</td>
+                    <td><input type="text" id="chavePixEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td>Qual o link do Pix copia e cola?</td>
+                    <td><input type="text" id="pixCopiaColaEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: right;">
+                        <input type="button" value="Voltar" onclick="event.preventDefault();previousSetupPage('configureShopPayments');">
+                        <input type="button" value="Próximo" onclick="event.preventDefault();configureShopPaymentsValidate();">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </dialog>
+
+    <dialog id="configureShopDelivery">
+        <form>
+            <table class="table-dialog">
+                <tr>
+                    <td colspan="2">
+                        <a><i data-lucide="bike"></i></a>&emsp;Como você entrega o pedido do cliente? - Tela 3/4
+                    </td>
+                </tr>
+                <tr>
+                    <td>Qual o valor mínimo para entregar?</td>
+                    <td><input type="number" id="valorMinimoEntregaEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td>A partir de que valor o cliente não paga a taxa?</td>
+                    <td><input type="number" id="valorMinimoIsencaoEntregaEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td>A partir de que horas você começa a entregar?</td>
+                    <td><input type="time" id="inicioEntregaEntregaEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td>Até que horas você entrega?</td>
+                    <td><input type="time" id="fimEntregaEntregaEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: right;">
+                        <input type="button" value="Voltar" onclick="event.preventDefault();previousSetupPage('configureShopDelivery');">
+                        <input type="button" value="Próximo" onclick="event.preventDefault();configureShopDeliveryValidate();">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </dialog>
+
+    <dialog id="configureShopAppearance1">
+        <form>
+            <table class="table-dialog">
+                <tr>
+                    <td colspan="2">
+                        <a><i data-lucide="paintbrush"></i></a>&emsp;Vamos deixar o sistema a cara do seu negócio - Tela 4/4
+                    </td>
+                </tr>
+                <tr>
+                    <td>Qual a cor principal?</td>
+                    <td><input type="color" id="corPrincipalEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td>Qual a cor principal de destaque (contraste)?</td>
+                    <td><input type="color" id="corDestaqueEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td>Qual a cor de apoio (fundo)?</td>
+                    <td><input type="color" id="corDeFundoEstabelecimento"></td>
+                </tr>
+                <tr>
+                    <td>Qual a cor principal?</td>
+                    <td><input type="file" id=""></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: right;">
+                        <input type="button" value="Voltar" onclick="event.preventDefault();previousSetupPage('configureShopAppearance');">
+                        <input type="button" value="Concluir" onclick="event.preventDefault();doCreateShop();">
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </dialog>
+
+
+    <dialog id="configureShopAppearance">
+        <form>
+            <fieldset>
+                <legend>Informações Básicas</legend>
+                <br>
+                <label for="nome">Nome do estabelecimento:</label>
+                <input type="text" id="nome" name="nome" required><br><br>
+    
+                <label for="tipo">Tipo de estabelecimento:</label>
+                <input type="text" id="tipo" name="tipo" required list="tipos"><br><br>
+                <datalist id="tipos">
+                    <option value="Loja"></option>
+                    <option value="Lanchonete"></option>
+                    <option value="Restaurante"></option>
+                    <option value="Sorveteria"></option>
+                </datalist>
+    
+                <label for="endereco">Endereço completo:</label>
+                <div>
+                    <div style="display: inline-flex; align-items: center; width: 100%;">
+                        <select style="border-right: 0;" class="fixed-width">
+                            <option>Rua</option>
+                            <option>Avenida</option>
+                            <option>Travessa</option>
+                            <option>Praça</option>
+                        </select>
+                        <input type="text" id="endereco" name="endereco" required>
+                        <span style="margin: 0 5px;white-space: nowrap;">, nº&nbsp;</span>
+                        <input type="text" class="fixed-width">
+                    </div>
+                </div><br>
+    
+                <label for="telefone">Telefone de contato:</label>
+                <input type="tel" id="telefone" name="telefone" required><br><br>
+    
+                <label for="email">E-mail de contato:</label>
+                <input type="email" id="email" name="email" required><br><br>
+    
+                <label for="horario">Horário de funcionamento:</label>
+                <input type="text" id="horario" name="horario" required><br><br>
+            </fieldset>
+    
+            <!-- Opções de Pagamento -->
+            <fieldset>
+                <legend>Atendimento</legend>
+                <br>
+                <label><input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Recebo no cartão</label><br><br>
+                <label><input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Recebo no Pix</label><br><br>
+                <label><input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Realizo entregas</label><br><br>
+                <label><input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Ofereço atendimento no balcão (ponto de venda)</label><br><br>
+                <label><input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Tenho mesas e cadeiras para clientes</label><br><br>
+                <label><input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Tenho serviço de self-service</label><br><br>
+                <label><input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Garçom/garçonete</label><br><br>
+                <label><input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Ofereço reserva antecipada</label><br><br>
+                <label><input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Ofereço Wi-Fi para clientes</label><br><br>
+            </fieldset>
+
+            <fieldset>
+                <legend>Opções de pagamento no cartão</legend>
+                <br>
+                <label>
+                    Taxa do cartão de crédito:&emsp;
+                    <input type="number" id="valor_minimo" name="valor_minimo" step="0.10">
+                    <label>&emsp;<input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Não cobro a taxa da maquininha</label></label>
+                </label><br><br>
+                <label>
+                    Não cobrar taxa para compras acima de :&emsp;
+                    <input type="number" id="valor_minimo" name="valor_minimo" step="0.10">
+                    <label>&emsp;<input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Sempre combrar taxa do cartão</label></label>
+                </label><br><br>
+                <label>
+                    <input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Levo a maquininha até o cliente (entrega)
+                </label><br><br>
+            </fieldset>
+
+            <fieldset>
+                <legend>Dados do Pix</legend>
+                <br>
+                <label>
+                    Qual nome aparece quando a pessoa te transfere via Pix?&emsp;
+                    <input type="text" id="valor_minimo" name="valor_minimo" step="0.10">
+                </label><br><br>
+                <label for="endereco">Chave PIX:</label>
+                <div>
+                    <div style="display: inline-flex; align-items: center; width: 100%;">
+                        <select style="border-right: 0;" class="fixed-width">
+                            <option>CNPJ</option>
+                            <option>CPF</option>
+                            <option>Email</option>
+                            <option>Celular</option>
+                        </select>
+                        <input type="text" id="endereco" name="endereco" required>
+                    </div>
+                </div><br>
+                <label>
+                    Nome na fatura: &emsp;
+                    <input type="text" id="valor_minimo" name="valor_minimo" step="0.10" class="fixed-width">
+                    <label>&emsp;<input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Exigir pagamento antecipado</label></label>
+                </label><br><br>
+            </fieldset>
+
+            <fieldset>
+                <legend>Opções de Entrega</legend>
+                <br>
+                <label>
+                    Telefone para solicitar entrega:&emsp;
+                    <input type="number" id="valor_minimo" name="valor_minimo" step="0.10">
+
+                </label><br><br>
+                <label>
+                    Taxa de entrega:&emsp;
+                    <input type="number" id="valor_minimo" name="valor_minimo" step="0.10">
+                    <label>&emsp;<input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Não tem valor mínimo de entrega</label></label>
+                </label><br><br>
+                <label>
+                    Taxa de entrega:&emsp;
+                    <input type="number" id="valor_minimo" name="valor_minimo" step="0.10">
+                    <label>&emsp;<input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Não cobro taxa de entrega</label></label>
+                </label><br><br>
+                <label>
+                    Valor mínimo para não cobrar taxa de entrega:&emsp;
+                    <input type="number" id="valor_minimo" name="valor_minimo" step="0.10">
+                    <label>&emsp;<input type="checkbox" id="visa" name="bandeiras" value="Visa">&emsp;Toda entrega tem taxa</label></label>
+                </label><br><br>
+                <label>
+                    Tempo médio de espera para entrega:&emsp;
+                    <input type="time" id="valor_minimo" name="valor_minimo" step="0.10" class="fixed-width">
+                </label><br><br>
+                <label>
+                    Horário de início para entrega:&emsp;
+                    <input type="time" id="valor_minimo" name="valor_minimo" step="0.10" class="fixed-width">
+                </label><br><br>
+                <label>
+                    Horário máximo para realizar pedidos para entrega:&emsp;
+                    <input type="time" id="valor_minimo" name="valor_minimo" step="0.10" class="fixed-width">
+                </label><br><br>
+                <fieldset>
+                    <legend>Dias para entrega</legend>
+                    <br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Segunda</label><br><br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Terça</label><br><br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Quarta</label><br><br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Quinta</label><br><br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Sexta</label><br><br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Sábado</label><br><br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Domingo</label><br>
+                </fieldset>
+            </fieldset>
+
+            <fieldset>
+                <legend>Dimensionamento do estabelecimento</legend>
+                <br>
+                <fieldset>
+                    <legend>Tipos de mesa</legend>
+                    <br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Com dois lugares</label><br><br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Com 4 lugares</label><br><br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Com 6 lugares</label><br><br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Com 8 lugares</label><br><br>
+                    <label><input type="checkbox" id="visa" name="bandeiras" value="Visa" checked>&emsp;Com 10 ou mais Lugares</label><br><br>
+                </fieldset>
+            </fieldset>
+
+
+            <fieldset>
+                <legend>Wi-Fi dos clientes</legend>
+                <br>
+                <label>
+                    Nome da rede (diferencia maiúsculo e minúsculo):&emsp;
+                    <input type="text" id="valor_minimo" name="valor_minimo" step="0.10">
+                </label><br><br>
+                <label>
+                    Senha:&emsp;
+                    <input type="password" id="valor_minimo" name="valor_minimo" step="0.10">
+                </label><br><br>
+            </fieldset>
+            <!-- Opções de Entrega -->
+    
+            <!-- Detalhes Adicionais -->
+            <fieldset>
+                <legend>Detalhes Adicionais</legend>
+                
+                <label for="cores">Quais são as cores predominantes na decoração do estabelecimento? (Por exemplo, cores das paredes, móveis, etc.)</label><br>
+                <input type="text" id="cores" name="cores"><br><br>
+    
+                <label for="foto_decoracao">Se possível, envie uma foto ou uma descrição mais detalhada da decoração:</label><br>
+                <input type="file" id="foto_decoracao" name="foto_decoracao"><br><br>
+    
+                <label for="caracteristicas">Possui alguma característica especial que gostaria de destacar? (Ex.: ambiente temático, pet-friendly, etc.)</label><br>
+                <input type="text" id="caracteristicas" name="caracteristicas"><br><br>
+    
+                <label for="ofertas_promocoes">Há alguma oferta ou promoção especial para clientes?</label><br>
+                <input type="text" id="ofertas_promocoes" name="ofertas_promocoes"><br><br>
+    
+                <label for="reserva">É necessário fazer reserva? Se sim, como?</label><br>
+                <input type="text" id="reserva" name="reserva"><br><br>
+    
+                <label for="informacoes_relevantes">Há outras informações relevantes que devem ser incluídas no cadastro?</label><br>
+                <input type="text" id="informacoes_relevantes" name="informacoes_relevantes"><br><br>
+            </fieldset>
+        </form>
+    </dialog>
+
+    <dialog id="manageCategories">
+        <form>
+            <table class="table-dialog">
+                <tr>
+                    <td><button class="close-button">X</button></td>
+                    <th colspan="2">Aqui você pode controlar as categorias dos seus produtos</th>
+                </tr>
+                <tr>
+                    <td>Nome:</td>
+                    <td><input type="text" id="nomeCategoria" style="width: 100%;"></td>
+                </tr>
+                <tr style="vertical-align: middle;">
+                    <td>Ícone:</td>
+                    <td>
+                        <table class="table-picker" id="iconeCategoria">
+                            <tr></tr>
+                            <tr>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                                <td class="border" style="text-align: center;"><i data-lucide="bolt"></i></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: right;"><button onclick="doCreateCategory()">Adicionar</button></td>
+                </tr>
+
+            </table>
+            <hr>
+            <table class="table-simplified" style="width: 100%;"> 
+                <tr>
+                    <td colspan="3"><b>Categorias ativas</b></td>
+                </tr>
+            </table>
+        </form>
+    </dialog>
+
+    <table class="table-list">
+        <tbody>
+            <tr></tr>
+            <tr onclick="openDialog('manageCategories');">
+                <td><img src="" alt="" width="64" height="64"></td>
+                <td>
+                    <b>Categoria de produtos</b><br>
+                    Gerencie os grupos de produtos
+                </td>
+            </tr>
+            <tr>
+                <td><img src="" alt="" width="64" height="64"></td>
+                <td>
+                    <b>Produtos</b><br>
+                    Gerencie seu estoque de produtos
+                </td>
+            </tr>
+            <tr>
+                <td><img src="" alt="" width="64" height="64"></td>
+                <td>
+                    <b>Frente de caixa (PDV)</b><br>
+                    Realize vendas de balcão e vendas presenciais direto no caixa
+                </td>
+            </tr>
+            <tr>
+                <td><img src="" alt="" width="64" height="64"></td>
+                <td>
+                    <b>Mesas (salão)</b><br>
+                    Organize o espaço onde os clientes podem consumir seus produtos
+                </td>
+            </tr>
+            <tr>
+                <td><img src="" alt="" width="64" height="64"></td>
+                <td>
+                    <b>Relatório de vendas</b><br>
+                    Faça o controle de caixa (abertura e fechamento), e suas fontes de receita
+                </td>
+            </tr>
+            <tr>
+                <td><img src="" alt="" width="64" height="64"></td>
+                <td>
+                    <b>Pedidos</b><br>
+                    Gerencie seus pedidos
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  <script>
+    async function doLogin() {
+        const { data, error } = await sb.auth.signInWithPassword({
+            email: 'teste@exemplo.com',
+            password: '123',
+        })
+
+        if (error) {
+            console.log(error)
+            return;
+        }
+
+        localStorage.setItem("loginId",data.user.id);
+
+        document.getElementById("login").close();
+    }
+
+    function nextSetupPage(currentPage) {
+        let pages = {
+            'configureShop': 'configureShopPayments',
+            'configureShopPayments': 'configureShopDelivery',
+            'configureShopDelivery': 'configureShopAppearance',
+        }
+
+        document.getElementById(currentPage).close();
+        document.getElementById(pages[currentPage]).showModal();
+    }
+
+    function previousSetupPage(currentPage) {
+        let pages = {
+            'configureShopPayments': 'configureShop',
+            'configureShopDelivery': 'configureShopPayments',
+            'configureShopAppearance': 'configureShopDelivery',
+        }
+
+        document.getElementById(currentPage).close();
+        document.getElementById(pages[currentPage]).showModal();
+    }
+
+    function openDialog(id) {
+        document.getElementById(id).showModal();
+        for (let input of [...document.getElementById(id).querySelectorAll('input')]){
+            input.focus();
+            break;
+        }
+    }
+
+
+    function generatePayloadPix(nome, chavepix, valor, cidade, txtId){
+
+    }
+
+    function configureShopValidate(){
+        let nomeEstabelecimento = document.getElementById("nomeEstabelecimento").value;
+        let telefoneEstabelecimento = document.getElementById("telefoneEstabelecimento").value;
+        let aceitaCartaoEstabelecimento = document.getElementById("aceitaCartaoEstabelecimento").value;
+        let aceitaCartaoCorporativoEstabelecimento = document.getElementById("aceitaCartaoCorporativoEstabelecimento").value;
+        let aceitaPixEstabelecimento = document.getElementById("aceitaPixEstabelecimento").value;
+        let realizaEntregaEstabelecimento = document.getElementById("realizaEntregaEstabelecimento").value;
+
+        if (nomeEstabelecimento=="") {
+            document.getElementById("errorConfigureShop").innerText = "Preencha o nome do estabelecimento";
+            return;
+        }
+
+        if (telefoneEstabelecimento=="") {
+            document.getElementById("errorConfigureShop").innerText = "Forneça ao menos um telefone de contato";
+            return;
+        }
+
+        if (aceitaCartaoEstabelecimento=="Escolha") {
+            document.getElementById("errorConfigureShop").innerText = "Precisamos saber se você aceita cartão de crédito ou débito";
+            return;
+        }
+
+        if (aceitaCartaoCorporativoEstabelecimento=="Escolha") {
+            document.getElementById("errorConfigureShop").innerText = "Precisamos saber se você aceita cartão corporativo";
+            return;
+        }
+
+        if (aceitaPixEstabelecimento=="Escolha") {
+            document.getElementById("errorConfigureShop").innerText = "Precisamos saber se você aceita Pix como meio de pagamento";
+            return;
+        }
+
+        if (realizaEntregaEstabelecimento=="Escolha") {
+            document.getElementById("errorConfigureShop").innerText = "Precisamos saber se você realiza entregas";
+            return;
+        }
+
+
+        nextSetupPage("configureShop")
+    }
+
+    function configureShopPaymentsValidate(){
+        let taxaCartaoCreditoEstabelecimento = document.getElementById("taxaCartaoCreditoEstabelecimento").value;
+        let chavePixEstabelecimento = document.getElementById("chavePixEstabelecimento").value;
+        let pixCopiaColaEstabelecimento = document.getElementById("pixCopiaColaEstabelecimento").value;
+
+        nextSetupPage("configureShopPayments")
+    }
+
+    function configureShopDeliveryValidate(){
+        let valorMinimoEntregaEstabelecimento = document.getElementById("valorMinimoEntregaEstabelecimento").value;
+        let valorMinimoIsencaoEntregaEstabelecimento = document.getElementById("valorMinimoIsencaoEntregaEstabelecimento").value;
+        let inicioEntregaEntregaEstabelecimento = document.getElementById("inicioEntregaEntregaEstabelecimento").value;
+        let fimEntregaEntregaEstabelecimento = document.getElementById("fimEntregaEntregaEstabelecimento").value;
+
+        nextSetupPage("configureShopDelivery")
+    }
+
+    async function doCreateShop(){
+        const { data, error } = await sb.from('estabelecimento').insert([{
+            nome: 'Example Name',
+            telefone: '123-456-7890',
+            aceitaCartao: true,
+            aceitaCartaoCorporativo: false,
+            aceitaPix: true,
+            realizaEntrega: true,
+            taxaCartaoCredito: 2.5, // assuming this is a percentage
+            nomePix: 'Example Pix Name',
+            chavePix: 'example-pix-key',
+            pixCopiaCola: 'example-pix-copia-e-cola',
+            valorMinimoEntrega: 20.00,
+            valorMinimoIsencao: 50.00,
+            inicioEntregaEntrega: '08:00',
+            fimEntregaEntrega: '18:00',
+            corPrincipal: '#FF5733',
+            corDestaque: '#C70039',
+            corDeFundo: '#900C3F',
+            logo: 'example-logo-url',
+        }]).select();
+
+        if (error) {
+            console.error('Error inserting data:', error);
+            return;
+        }
+
+        localStorage.setItem("shopData",JSON.stringify(data[0]))
+
+        document.getElementById("configureShopAppearance").close();
+    }
+
+    async function doCreateCategory(){
+        let shopData = JSON.parse(localStorage.getItem("shopData"));
+        const { data, error } = await sb.from('categoria_produtos').insert([{
+            id_estabelecimento: shopData.id ,
+            nome: 'Teste',
+            destaques: '{}',
+            icone: '<>'
+        }]).select();
+
+        if (error) {
+            console.error('Error inserting data:', error);
+            return;
+        }
+
+        console.log(data)
+    }
+
+    async function doDeleteCategory(){
+        const response = await supabase
+  .from('countries')
+  .delete()
+  .eq('id', 1)
+
+  
+    }
+
+    async function convertAndResize(url) {
+        try {
+            const blob = await new Promise((resolve, reject) => {
+                let image = new Image();
+                image.onload = function () {
+                    let canvas = document.createElement('canvas');
+                    canvas.width = 500;
+                    canvas.height = 500;
+
+                    let context = canvas.getContext('2d');
+                    context.drawImage(image, 0, 0, 500, 500);
+
+                    canvas.toBlob(function (blob) {
+                        if (blob) {
+                            resolve(blob);
+                            return;
+                        }
+                        reject(new Error("Canvas toBlob conversion failed"));
+                    }, 'image/png');
+                };
+
+                image.onerror = function () {
+                    reject(new Error("Image failed to load"));
+                };
+
+                image.src = url;
+            });
+
+            return blob;
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    }
+
+    function setupShop(data){
+
+    }
+
+    (() => {
+        document.getElementById("configureShopAppearance").showModal();
+        return;
+        /*if (!localStorage.getItem("loginId")) {
+            document.getElementById("login").show();
+            return;
+        }
+
+        (async () => {
+            const { data, error } = await sb.from('estabelecimento').select('*')
+                .eq('proprietario', localStorage.getItem("loginId"));
+
+            if (error) {
+                console.error('Error:', error);
+                return;
+            }
+
+            const shop = data[0];
+            localStorage.setItem("shopData",JSON.stringify(data[0]))
+
+        })()
+
+        if (!localStorage.getItem("shopData")) {
+            document.getElementById("configureShopAppearance").showModal();
+            return;
+        }
+*/
+    })()
+
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script> lucide.createIcons(); </script>
+  <script>
+    function closeParentDialog() {
+        const dialog = event.target.closest('dialog');
+        if (dialog) dialog.close();
+
+        event.preventDefault();
+    }
+
+    function selectItem(event) {
+        const td = event.currentTarget;
+        
+        if (td.tagName.toLowerCase() !== 'td') return;
+
+        const table = td.closest('table');
+        const allTds = table.querySelectorAll('td');
+   
+        allTds.forEach(cell => cell.classList.remove("selected"));
+    
+        const safeValue = td.innerHTML
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;")
+        ;
+
+        table.setAttribute("value", safeValue);
+        td.classList.add("selected");
+    }
+
+
+
+    function geraPayload(nome, chavepix, valor, cidade, txtId) {
+    let calculateCRC16 = (data) => {
+        const polynomial = 0x1021;
+        let crc = 0xFFFF;
+        for (let i = 0; i < data.length; i++) {
+          crc ^= (data[i] << 8);
+          for (let j = 0; j < 8; j++) {
+            crc = (crc & 0x8000) ? ((crc << 1) ^ polynomial) : (crc << 1);
+          }
+        }
+        return crc & 0xFFFF;
+      }
+
+    valor = valor.replace(',', '.');
+
+    let nomeSize = nome.length;
+    let chavepixSize = chavepix.length;
+    let valorSize = valor.length;
+    let cidadeSize = cidade.length;
+    let txtIdSize = txtId.length;
+
+    const merchantAccountSize = `0014BR.GOV.BCB.PIX01${chavepixSize.toString().padStart(2, '0')}${chavepix}`;
+    const transactionAmountSize = `${valorSize.toString().padStart(2, '0')}${parseFloat(valor).toFixed(2)}`;
+    const addDataFieldSize = `05${txtIdSize.toString().padStart(2, '0')}${txtId}`;
+
+    nomeSize = nomeSize.toString().padStart(2, '0');
+    cidadeSize = cidadeSize.toString().padStart(2, '0');
+
+    let payloadFormat = '000201';
+    let merchantAccount = `26${merchantAccountSize.length.toString().padStart(2, '0')}${merchantAccountSize}`;
+    let merchantCategCode = '52040000';
+    let transactionCurrency = '5303986';
+    let transactionAmount = `54${transactionAmountSize}`;
+    let countryCode = '5802BR';
+    let merchantName = `59${nomeSize}${nome}`;
+    let merchantCity = `60${cidadeSize}${cidade}`;
+    let addDataField = `62${addDataFieldSize.length.toString().padStart(2, '0')}${addDataFieldSize}`;
+    let crc16 = '6304';
+
+    let payload = `${payloadFormat}${merchantAccount}${merchantCategCode}${transactionCurrency}${transactionAmount}${countryCode}${merchantName}${merchantCity}${addDataField}${crc16}`;
+  
+    const crc16Code = calculateCRC16([...payload].map(c => c.charCodeAt(0)));
+    const crc16Code_formatado = crc16Code.toString(16).toUpperCase().padStart(4, '0');
+
+    return `${payload}${crc16Code_formatado}`
+}
+
+
+
+
+    document.querySelectorAll(".close-button").forEach(item => {item.addEventListener("click", closeParentDialog);});
+    document.querySelectorAll(".table-picker td").forEach(item => {item.addEventListener("click", selectItem);});
+  </script>
+    <script>
+        document.querySelector('input[name="aceita_cartao"]').addEventListener('change', function() {
+            document.getElementById('bandeiras_cartao').style.display = this.value === 'sim' ? 'block' : 'none';
+        });
+
+        document.querySelector('input[name="aceita_pix"]').addEventListener('change', function() {
+            document.getElementById('formas_pix').style.display = this.value === 'sim' ? 'block' : 'none';
+        });
+
+        document.querySelector('input[name="oferece_entrega"]').addEventListener('change', function() {
+            document.getElementById('regioes_atendidas').style.display = this.value === 'sim' ? 'block' : 'none';
+        });
+
+        document.querySelector('input[name="atendimento_local"]').addEventListener('change', function() {
+            document.getElementById('opcoes_atendimento').style.display = this.value === 'sim' ? 'block' : 'none';
+        });
+    </script>
+  </body>
+</html>
