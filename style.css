@@ -273,6 +273,10 @@ legend {
     td,th{
         padding:4px 10px
     }
+    dialog {
+        margin: 0;
+        padding: 9px !important;
+    }
 }
 
 /* Utility classes*/
