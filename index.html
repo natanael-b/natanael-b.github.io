@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+
+store, logo, data, categories, card, list, item, text, price {
+  display: block;
+}
+
+*,*::before,*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote, dl, dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  box-shadow: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body > header, body > footer, body > main > info {
+  display: flex;
+}
+
+body > header > *, body > footer > *, body > main > info > * {
+  flex: 1;
+}
+
+body > main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+body > main > categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
+body > main > categories > card {
+  border: 1px solid darkgray;
+  width: calc(33% - 10px);
+  display: flex;
+  align-items: center;
+  padding: 18px;
+  gap: 9px;
+}
+
+
+body > main > banner {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+body > main > banner > .show {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+
+body > main > banner > .show > .inner {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+body > main > banner > .show > .inner > slide {
+  flex: 0 0 300px;
+  height: 300px;
+}
+
+
+body > main > banner > .show > .inner > slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+body > main > store {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 18px;
+  box-sizing: border-box;
+  padding-bottom: 36px;
+}
+
+body > main > store > logo {
+  width: 96px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+body > main > store > data {
+  flex-grow: 1;
+  text-align: center;
+  padding-right: 96px;
+}
+
+body > main > list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+body > main > list > item {
+  border: 1px solid darkgray;
+  width: calc(100% - 0px);
+  display: flex;
+  align-items: center;
+  padding: 18px;
+  gap: 9px;
+}
+
+body > main > list > item > text {
+  flex-grow: 1;
+}
+body > main > list > item > text > b {
+  display: block;
+  margin-bottom: 9px;
+}
+
+body > main > list :not(:last-child) {
+  border-bottom: 0px solid transparent;
+}
+
+body > main > list > item > img {
+  width: 96px;
+}
+
+@media (max-width: 600px) {
+  body > main > categories > card {
+    width: 100%;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <header>
+    </header>
+    <main>
+      <store>
+        <logo>
+          <img src="logo.jpg" width=96>
+        </logo>
+        <data>
+          <h2>Nome do estabelecimento</h2>
+          <a href="Link pro google maps">Rua X, numero Y - Bairro Z, Cidade W</a>
+        </data>
+      </store>
+      <banner>
+        <slide>
+          <img src="1.jpg">
+        </slide>
+        <slide>
+          <img src="2.jpg">
+        </slide>
+        <slide>
+          <img src="3.jpg">
+        </slide>
+      </banner>
+      <categories>
+        <card>
+          <icon name="hamburger"></icon>
+          <text>Hamburguer</text>
+        </card>
+        <card>
+          <icon name="hamburger"></icon>
+          <text>Hamburguer</text>
+        </card>
+        <card>
+          <icon name="hamburger"></icon>
+          <text>Hamburguer</text>
+        </card>
+        <card>
+          <icon name="hamburger"></icon>
+          <text>Hamburguer</text>
+        </card>
+        <card>
+          <icon name="hamburger"></icon>
+          <text>Hamburguer</text>
+        </card>
+        <card>
+          <icon name="hamburger"></icon>
+          <text>Hamburguer</text>
+        </card>
+      </categories>
+      <list>
+        <item>
+          <img src="3.jpg">
+          <text>
+            <b>Hamburguer</b>
+            Descrição do item aqui
+          </text>
+          <price>
+          R$ <big><b>9,99</b></big>
+          </price>
+        </item>
+      </list>
+    </main>
+    <footer>
+    </footer>
+    <script src="assets/js/icones.js"></script>
+
+<script>
+  const banner = document.querySelector('banner');
+  const slides = Array.from(banner.children);
+
+  const inner = document.createElement('div');
+  inner.className = 'inner';
+
+  const show = document.createElement('div');
+  show.className = 'show';
+  show.appendChild(inner);
+
+  slides.forEach(slide => inner.appendChild(slide.cloneNode(true)));
+  slides.forEach(slide => inner.appendChild(slide.cloneNode(true)));
+
+  banner.innerHTML = '';
+  banner.appendChild(show);
+
+  const totalSlides = slides.length;
+  const slideWidth = 300;
+  let index = 0;
+
+  function slideStep() {
+    index++;
+
+    if (index > totalSlides) {
+      // Reset instantâneo, sem animação
+      inner.style.transition = 'none';
+      inner.style.transform = 'translateX(0)';
+      index = 1;
+
+      // Força o repaint antes de animar de novo
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          inner.style.transition = 'transform 0.5s ease';
+          inner.style.transform = `translateX(${-slideWidth * index}px)`;
+        });
+      });
+    } else {
+      inner.style.transform = `translateX(${-slideWidth * index}px)`;
+    }
+
+    // Chama a próxima troca depois de 2.5s (2s pausa + 0.5s transição)
+    setTimeout(slideStep, 2500);
+  }
+
+  // Começa o loop após 2.5s para mostrar o primeiro slide inicial
+  setTimeout(slideStep, 2500);
+</script>
+  </body>
+</html>

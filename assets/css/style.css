@@ -1,0 +1,405 @@
+/*
+  Universalização de tamanhos nos navegadores
+*/
+
+body::after,body::before{
+    content:"";
+    display:table
+}
+h1,h2{
+    padding-bottom:.3em
+}
+progress,sub,sup{
+    vertical-align:baseline
+}
+input[type=date-local]:not(.fixed-width),
+input[type=date]:not(.fixed-width),
+input[type=datetime-local]:not(.fixed-width),
+input[type=email]:not(.fixed-width),
+input[type=month]:not(.fixed-width),
+input[type=password]:not(.fixed-width),
+input[type=phone]:not(.fixed-width),
+input[type=range]:not(.fixed-width),
+input[type=text]:not(.fixed-width),
+input[type=time-local]:not(.fixed-width),
+input[type=time]:not(.fixed-width),
+input[type=url]:not(.fixed-width),
+input[type=week]:not(.fixed-width),
+select:not(.fixed-width),
+textarea:not(.fixed-width){
+    width:100%
+}
+*,legend{
+    box-sizing:border-box
+}
+img,legend{
+    max-width:100%
+}
+html{
+    line-height:1.15;
+    -webkit-text-size-adjust:100%;
+    -ms-text-size-adjust:100%
+}
+body{
+    max-width:1012px;
+    padding-right:16px;
+    padding-left:16px;
+    margin:32px auto;
+    font-family:sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    word-wrap:break-word
+}
+body::after{
+    clear:both
+}
+main{
+    display:block
+}
+h1,h2,h3,h4,h5,h6{
+    margin:24px 0 16px;
+    font-weight:600;
+    line-height:1.25
+}
+h1{
+    font-size:2em
+}
+h2{
+    font-size:1.5em
+}
+h3{
+    font-size:1.25em
+}
+h4{
+    font-size:1em
+}
+h5{
+    font-size:.875em
+}
+h6{
+    font-size:.85em
+}
+hr{
+    box-sizing:content-box;
+    height:.25em;
+    padding:0;
+    margin:24px 0;
+    border:0
+}
+code,kbd,pre,samp{
+    font-family:monospace,monospace;
+    font-size:1em
+}
+a{
+    background-color:transparent;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+abbr[title]{
+    border-bottom:none;
+    text-decoration:underline;
+    text-decoration:underline dotted
+}
+b,strong{
+    font-weight:bolder
+}
+blockquote{
+    padding:0 1em;
+    margin:0
+}
+small{
+    font-size:80%
+}
+sub,sup{
+    font-size:75%;
+    line-height:0;
+    position:relative
+}
+sub{
+    bottom:-.25em
+}
+sup{
+    top:-.5em
+}
+table{
+    border-spacing:0;
+    border-collapse:collapse
+}
+td,th{
+    padding:6px 13px
+}
+tr{
+    display:table-row;
+    vertical-align:inherit;
+    unicode-bidi:isolate;
+    border-color:inherit;
+    border-top:1px solid
+}
+dialog{
+    border:0;
+    padding:2rem
+}
+::backdrop{
+    opacity:.75
+}
+fieldset{
+    padding:.35em .75em .625em
+}
+legend{
+    color:inherit;
+    display:table;
+    padding:0;
+    white-space:normal
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+    height:auto
+}
+input[type=search]{
+    -webkit-appearance:textfield;
+    -moz-appearance:textfield;
+    outline-offset:-2px
+}
+input[type=search]::-webkit-search-decoration{
+    -webkit-appearance:none;
+    -moz-appearance:none
+}
+::-webkit-file-upload-button{
+    -webkit-appearance:button;
+    -moz-appearance:button;
+    font:inherit
+}
+details,input[type=hidden],summary{
+    display:none
+}
+button::-moz-focus-inner,
+input[type=button]::-moz-focus-inner,
+input[type=reset]::-moz-focus-inner,
+input[type=submit]::-moz-focus-inner{
+    border-style:none;
+    padding:0
+}
+button:-moz-focusring,
+input[type=button]:-moz-focusring,
+input[type=reset]:-moz-focusring,
+input[type=submit]:-moz-focusring{
+    outline:transparent dotted 1px
+}
+button,input,optgroup,select,textarea{
+    font-family:inherit;
+    font-size:100%;
+    line-height:1.15;
+    margin:0;
+    padding:0
+}
+button,input{
+    overflow:visible
+}
+button,select{
+    text-transform:none
+}
+button,input,select{
+    padding:9px;
+    border-radius:3px
+}
+textarea{
+    height:100%;
+    overflow:auto
+}
+input[type=checkbox],input[type=radio]{
+    box-sizing:border-box;
+    padding:0;
+    transform:scale(1.5)
+}
+button,
+input[type=button],
+input[type=reset],
+input[type=submit]{
+    -webkit-appearance:button;
+    -moz-appearance:button;
+}
+ol,ul{
+    margin:0;
+}
+img{
+    border:0;
+    height:auto
+}
+
+fieldset {
+    padding: 1em;
+    padding-top: 0.5rem; /* Extra space to ensure content stays clear of the legend */
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin: 0;
+    display: flex;
+    padding-left: 1rem;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box; 
+    text-align: left;
+}
+
+
+/* Small screens rules */
+@media (max-width:768px){
+    body{
+        padding-left:8px;
+        padding-right:8px
+    }
+    h1{
+        font-size:1.5em
+    }
+    h2{
+        font-size:1.25em
+    }
+    h3{
+        font-size:1.1em
+    }
+    table{
+        width:100%;
+        font-size:.9em
+    }
+    td,th{
+        padding:4px 10px
+    }
+}
+
+/* Utility classes*/
+
+.table-dialog td, .table-dialog th, .table-list td, .table-list th, .table-simplified td, .table-simplified th{
+    border: 0;
+}
+
+.table-dialog tr, .table-list tr {
+    border: 0;
+}
+
+.table-dialog tr:nth-child(2n), .table-list tr:nth-child(2n), .table-simplified tr:nth-child(2n),.table-picker tr:nth-child(2n) {
+    background-color: transparent;
+}
+
+.table-list tr:not(:first-child):hover {
+    cursor: pointer!important;
+}
+
+.close-button {
+    border: 0;
+    border-radius: 50%; width: 38px; height: 38px; padding: 0; line-height: 38px;
+    color: #FFFFFF;
+    background-color: #e74c3c;
+}
+
+.close-button:hover {
+    background-color: #eb4d4b;
+}
+
+.close-button:focus {
+    background-color: #c0392b;
+}
+
+
+
+/*
+  Tema claro
+*/
+
+body {
+    color: #24292e;
+    background-color: #ffffff;
+}
+::backdrop {
+    background-color: #FFFFFF;
+}
+a{
+    color: #0969da;
+}
+h1,h2{
+    border-bottom: 1px solid #eaecef;
+}
+h6 {
+    color: #6a737d;
+}
+hr {
+    background-color: #e1e4e8;
+}
+blockquote {
+    color: #6a737d;
+    border-left: 0.25em solid #dfe2e5;
+}
+input,button,select,th, td, tr, .table-dialog,.table-dialog tr:first-child, .table-list tr, .table-simplified tr, .border {
+    border: 1px solid #dfe2e5;
+}
+button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+input[type=reset]:hover,
+table tr:nth-child(2n), .table-dialog tr:first-child, .table-list tr:first-child, .table-simplified tr:first-child {
+    background-color: #f6f8fa;
+}
+dialog {
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+input:focus,button:focus,select:focus {
+    outline: 2px solid #24292e;
+}
+button,
+input[type=submit],
+input[type=button],
+input[type=reset] {
+    background-color: #eaecef;
+}
+button:focus,
+input[type=submit]:focus,
+input[type=button]:focus,
+input[type=reset]:focus {
+    background-color: #dfe2e5;
+    border: 1px solid transparent;
+}
+
+input[type=radio]:focus, input[type=checkbox]:focus {
+    outline: 0;
+    border: 2px solid #24292e;
+}
+
+
+.table-list tr:not(:first-child):hover {
+    background-color: #f6f8fa;
+    border-bottom: 1px solid #f6f8fa;
+    border-top: 1px solid #f6f8fa;
+}
+
+.selected {
+    background-color: #dfe2e5;
+}
+
+.table-picker td:hover {
+    background-color: #dfe2e5;
+    cursor: pointer!important;
+}
+
+.border {
+    border: 1px solid #dfe2e5 !important;
+}
+
+fieldset {
+    border: 1px solid #dfe2e5 !important;
+}
+
+legend {
+    background-color: #f6f8fa;
+    border: 1px solid #dfe2e5 !important;
+}
+
+
+/*
+  Tema escuro
+*/
