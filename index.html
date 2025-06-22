@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <style>
 
@@ -181,9 +181,48 @@ body > main > list > item > img {
   width: 96px;
 }
 
+body > main > list > item > price {
+  text-wrap: nowrap;
+}
+
 @media (max-width: 600px) {
+body > main > store {
+  padding: 9px;
+  padding-bottom: 14px;
+}
+
+body > main > store > logo {
+  width: 64px;
+}
+
+body > main > store > data {
+  padding-right: 64px;
+}
+
+body > main > store > data > h2 {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+}
+  body > main > categories {
+    gap: 9px;
+    padding: 9px;
+  }
   body > main > categories > card {
     width: 100%;
+    gap: 4px;
+  }
+  body > main > list {
+    padding: 9px;
+  }
+  body > main > list > item {
+    padding: 9px;
+    gap: 4px;
+  }
+  body > main > list > item > img {
+    width: 64px;
+    padding-right: 6px;
   }
 }
 
