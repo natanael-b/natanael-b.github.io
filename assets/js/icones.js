@@ -188,3 +188,7 @@ const icones = {
     `,
 }
 
+
+for (let icon of document.getElementsByTagName("icon")) {
+    icon.innerHTML = icones[icon.getAttribute("name")];
+}

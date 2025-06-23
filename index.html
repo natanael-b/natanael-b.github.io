@@ -92,6 +92,30 @@ body > main > categories > card {
   gap: 9px;
 }
 
+body > main > info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 9px;
+  padding-bottom: 9px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+body > main > info > card {
+  border: 0px solid transparent;
+  width: calc(50% - 10px);
+  display: flex;
+  align-items: center;
+  padding:9px;
+  gap: 9px;
+}
+
+body > main > info > card > text > b {
+  display:block;
+}
+
+
 
 body > main > banner {
   width: 100%;
@@ -133,7 +157,7 @@ body > main > store {
   align-items: center;
   padding: 18px;
   box-sizing: border-box;
-  padding-bottom: 36px;
+  padding-bottom: 26px;
 }
 
 body > main > store > logo {
@@ -144,9 +168,13 @@ body > main > store > logo {
 }
 
 body > main > store > data {
+  height: 96px;
   flex-grow: 1;
   text-align: center;
   padding-right: 96px;
+  margin-left: 18px;
+  display: grid;
+  place-items: center;
 }
 
 body > main > list {
@@ -185,26 +213,34 @@ body > main > list > item > price {
   text-wrap: nowrap;
 }
 
+@media (max-width: 1051px) {
+  body > main > categories > card {
+    width: calc(50% - 10px);
+  }
+}
+
 @media (max-width: 600px) {
-body > main > store {
-  padding: 9px;
-  padding-bottom: 14px;
-}
+  body > main > store {
+    padding: 9px;
+    padding-bottom: 14px;
+  }
 
-body > main > store > logo {
-  width: 64px;
-}
+  body > main > store > logo {
+    width: 64px;
+  }
 
-body > main > store > data {
-  padding-right: 64px;
-}
+  body > main > store > data {
+    padding-right: 64px;
+    height: 64px;
+    margin-left: 9px;
+  }
 
-body > main > store > data > h2 {
+  body > main > store > data > h2 {
     font-weight: bold;
     margin: 0;
     padding: 0;
     font-size: inherit;
-}
+  }
   body > main > categories {
     gap: 9px;
     padding: 9px;
@@ -232,15 +268,52 @@ body > main > store > data > h2 {
     <header>
     </header>
     <main>
-      <store>
+      <store style="background-color: purple;">
         <logo>
           <img src="logo.jpg" width=96>
         </logo>
-        <data>
+        <data style="background-color: white;">
           <h2>Nome do estabelecimento</h2>
           <a href="Link pro google maps">Rua X, numero Y - Bairro Z, Cidade W</a>
         </data>
       </store>
+      <h3>Pagamento</h3>
+      <info>
+        <card>
+          <icon name="hamburger"></icon>
+          <text>Débito e Crédito</text>
+        </card>
+        <card>
+          <icon name="hamburger"></icon>
+          <text>Dinheiro</text>
+        </card>
+        <card>
+          <icon name="hamburger"></icon>
+          <text>Pix</text>
+        </card>
+      </info>
+      <h3>Tempo de espera</h3>
+      <info>
+        <card>
+          <icon name="hamburger"></icon>
+          <text><b>Para entrega: </b> de 40 min a 1h </text>
+        </card>
+        <card>
+          <icon name="hamburger"></icon>
+          <text><b>Para retirada: </b> de 35 min</text>
+        </card>
+      </info>
+      <h3>Entrega</h3>
+      <info>
+        <card>
+          <icon name="hamburger"></icon>
+          <text>Entrega até 9:30 PM</text>
+        </card>
+        <card>
+          <icon name="hamburger"></icon>
+          <text>Taxa R$ 3,00</text>
+        </card>
+      </info>
       <banner>
         <slide>
           <img src="1.jpg">
