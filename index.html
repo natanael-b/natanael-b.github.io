@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+
+/* App base  Layout*/
+
+*,*::before,*::after {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote, dl, dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, select, textarea,dialog {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+  box-shadow: none;
+}
+
+dialog{
+    margin:auto;
+    padding: 28px;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+dialog > * {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+dialog > :first-child {
+  margin-top: 0;
+}
+
+dialog > :last-child {
+  margin-bottom: 0;
+}
+
+fieldset,legend {
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 9px;
+}
+
+fieldset {
+  padding: 18px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body > header, body > footer, body > main {
+  display: flex;
+  flex-direction: row;
+}
+
+body > main {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0;
+  flex: 1;
+}
+
+body > header > *, body > footer > *, body > main > * {
+  flex: 1;
+}
+
+/* Quickly Layouts*/
+
+left-box {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+center-box {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+right-box {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+justify-box {
+  display: flex;
+  justify-content: space-between;
+  text-align: justify;
+}
+
+top-box {
+  display: flex;
+  align-items: flex-start;
+}
+
+middle-box {
+  display: flex;
+  align-items: center;
+}
+
+bottom-box {
+  display: flex;
+  align-items: flex-end;
+}
+
+top-left-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+top-center-box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+}
+
+top-right-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: right;
+}
+
+middle-left-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+}
+
+middle-center-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+middle-right-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+}
+
+bottom-left-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: left;
+}
+
+bottom-center-box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+}
+
+bottom-right-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: right;
+}
+
+justify-middle-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: justify;
+}
+
+/* Standard tags (WIP)*/
+
+hr{
+    box-sizing:content-box;
+    height:.25em;
+    padding:0;
+    margin:12px 0;
+    border:0;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin:24px 0 16px;
+    font-weight:600;
+    line-height:1.25;
+    padding-bottom: 9px;
+}
+h1{
+    font-size:2em
+}
+h2{
+    font-size:1.5em
+}
+h3{
+    font-size:1.25em
+}
+h4{
+    font-size:1em
+}
+h5{
+    font-size:.875em
+}
+h6{
+    font-size:.85em
+}
+
+h1,h2{
+    border-bottom: 1px solid;
+}
+
+blockquote{
+    padding:1em 1em;
+    margin:24px 0 24px;
+    border-left: 0.25em solid;
+}
+
+p {
+margin:16px 0 16px;
+}
+
+
+/*Tabelas*/
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 1em;
+}
+
+caption {
+  caption-side: top;
+  text-align: left;
+  font-weight: 600;
+  padding: 8px;
+  color: #333;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  font-weight: 600;
+}
+
+/* Suporte para tabelas com rolagem */
+table[scroll] {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+
+/*Forms controls (WIP)*/
+
+input[type=date-local],
+input[type=date],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=password],
+input[type=tel],
+input[type=range],
+input[type=text],
+input[type=time-local],
+input[type=time],
+input[type=url],
+input[type=week],
+select,
+textarea {
+    width:100%;
+    border: 1px solid;
+    padding: 9px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-radius: 4px;
+}
+
+textarea {
+  padding: 18px;
+  overflow-y: scroll;
+  height:100%;
+  resize: none;
+}
+
+button,
+input[type=submit],
+input[type=button],
+input[type=reset] {
+    padding:9px;
+    border-radius:3px;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+button:active,
+input[type=submit]:active,
+input[type=button]:active,
+input[type=reset]:active {
+    border-top: 1px solid transparent;
+}
+
+input[type="checkbox"] {
+  width: 26px;
+  height: 26px;
+  border: 2px solid;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 6px;
+  margin-left: 0px;
+}
+
+input[type="radio"] {
+  width: 26px;
+  height: 26px;
+  border: 2px solid;
+  border-radius: 50%; /* Círculo */
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 6px;
+  margin-left: 0px;
+  appearance: none; /* Remove o estilo padrão */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: black; /* Cor do ponto interno */
+}
+
+
+/*Custom controls*/
+
+card-book {
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+card-box {
+  padding: 0px;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  border-radius:3px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+card-box > :first-child {
+  flex: 1;
+}
+
+card-box > * {
+  padding: 9px;
+}
+
+card-box > card-label {
+  padding:9px;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+card-box:active {
+    border-top: 1px solid transparent;
+}
+
+list-box {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+list-item {
+  display: flex;
+  padding: 8px;
+  border-bottom: 1px solid;
+  align-items: center;
+  flex: unset;
+  cursor: pointer;
+}
+
+list-item:last-child {
+  border-bottom: none;
+}
+
+list-item > * {
+  padding: 4px;
+}
+
+vertical-scroll,horizontal-scroll {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+horizontal-scroll {
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+/*Light Theme*/
+
+html,dialog {
+  background-color: #ffffff;
+}
+
+fieldset,
+legend,
+input[type=date-local],
+input[type=date],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=password],
+input[type=tel],
+input[type=range],
+input[type=text],
+input[type=time-local],
+input[type=time],
+input[type=url],
+input[type=week],
+input[type="checkbox"],
+input[type="radio"],
+input[type=submit],
+input[type=button],
+input[type=reset],
+button,
+select,
+textarea,
+blockquote,list-box,
+list-item,
+card-box{
+    border-color: #dfe2e5;
+}
+
+input[type="checkbox"]:checked::after {
+  border-color: #333;
+}
+
+
+input[type="radio"]:checked::after {
+  background-color: #333; /* Cor do ponto interno */
+}
+
+
+button,
+input[type=submit],
+input[type=button],
+input[type=reset],
+card-box > card-label {
+    background-color: #eaecef;
+}
+button:focus,
+input[type=submit]:focus,
+input[type=button]:focus,
+input[type=reset]:focus,
+list-item:focus,
+card-box:focus {
+    background-color: #dfe2e5;
+}
+
+button:active,
+input[type=submit]:active,
+input[type=button]:active,
+input[type=reset]:active,
+list-item:active,
+card-box:active {
+    background-color: #dfe2e5 !important;
+}
+
+legend,
+button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+input[type=reset]:hover,
+list-item:hover,
+card-box:hover {
+    background-color: #f6f8fa;
+}
+
+hr{
+    background-color: #e1e4e8;
+}
+
+h1,h2{
+    border-color: #eaecef;
+}
+
+blockquote{
+    color: #6a737d;
+}
+
+
+    </style>
+  </head>
+  <body>
+    <header style="min-height: 48px; background: #000000; color: #ffffff;">
+      <div></div>
+      <middle-center-box id="nome"></middle-center-box>
+      <middle-right-box style="padding-right:9px;"></middle-right-box>
+    </header>
+    <main>
+      <div style="padding: 26px;margin: auto;">
+        <card-book style="justify-content: space-between;flex-direction: row-reverse;margin-bottom: 12px;max-width: 640px;">
+          <card-box style="flex: 1;">
+            <center-box style="flex-direction: column;align-items: center;">
+              <img src="img/calendar.png" style="max-width: 96px; max-height: 96px;">
+              <h3>Marque seu atendimento aqui</h3>
+            </center-box>
+          </card-box>
+        </card-book>
+
+        <card-book style="justify-content: space-between;max-width: 640px;max-width: 640px;margin-bottom: 12px;">
+          <card-box style="min-width: 150px;flex: 1;">
+            <center-box>
+              <img src="img/shop.png" width="96px">
+            </center-box>
+            <card-label>
+              <center-box><b>Nossa loja</b></center-box>
+            </card-label>
+          </card-box>
+
+          <card-box style="min-width: 150px;">
+            <center-box>
+              <img src="img/map.png" width="96px">
+            </center-box>
+            <card-label>
+              <center-box><b>Como chegar?</b></center-box>
+            </card-label>
+          </card-box>
+        </card-book>
+
+        <card-book style="justify-content: space-between;max-width: 640ox;max-width: 640px;margin-bottom: 12px;">
+          <card-box style="min-width: 150px;">
+            <center-box>
+              <img src="img/partnership-handshake.png" width="96px">
+            </center-box>
+            <card-label>
+              <center-box><b>Fidelidade</b></center-box>
+            </card-label>
+          </card-box>
+
+          <card-box style="min-width: 150px;">
+            <center-box>
+              <img src="img/idea.png" width="96px">
+            </center-box>
+            <card-label>
+              <center-box><b>Dicas</b></center-box>
+            </card-label>
+          </card-box>
+
+          <card-box style="min-width: 150px;">
+            <center-box>
+              <img src="img/picture.png" width="96px">
+            </center-box>
+            <card-label>
+              <center-box><b>Galeria</b></center-box>
+              <!--
+              Outros nomes:
+                - Fotos
+                - Momentos
+                - Portifólio
+                - Antes & Depois
+                - Inspiração
+              -->
+            </card-label>
+          </card-box>
+          <card-box style="min-width: 150px;">
+            <center-box>
+              <img src="img/rating.png" width="96px">
+            </center-box>
+            <card-label>
+              <center-box><b>Avaliações</b></center-box>
+            </card-label>
+          </card-box>
+        </card-book>
+        <card-book style="justify-content: space-between;max-width: 640px;max-width: 640px;margin-bottom: 12px;">
+          <card-box style="min-width: 150px;">
+            <center-box>
+              <img src="img/whatsapp.png" width="96px">
+            </center-box>
+            <card-label>
+              <center-box><b>Fale com a gente</b></center-box>
+            </card-label>
+          </card-box>
+
+          <card-box style="min-width: 150px;">
+            <center-box>
+              <img src="img/information.png" width="96px">
+            </center-box>
+            <card-label>
+              <center-box><b>Quem nós somos</b></center-box>
+            </card-label>
+          </card-box>
+        </card-book>
+      </div>
+    </main>
+    <br><br>
+    <footer style="text-align: center;background: #000000; color: #ffffff;padding: 9px;">
+      <div></div>
+      <div>(c) Natanael Barbosa Santos</div>
+      <div></div>
+    </footer>
+    <script>
+      ['card-book','card-box','card-label','list-item','center-box'].forEach((t) => customElements.define(t, class extends HTMLElement {}));
+    </script>
+    </body>
+</html>
